@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Backgrounds */
+  --bg-base:       #060810;
+  --bg-panel:      #0c1120;
+  --bg-card:       #101828;
+  --bg-card-hover: #141f30;
+  --bg-glass:      rgba(16, 24, 40, 0.7);
+
+  /* Borders */
+  --border:        rgba(56, 189, 248, 0.1);
+  --border-bright: rgba(56, 189, 248, 0.22);
+  --border-focus:  rgba(56, 189, 248, 0.5);
+
+  /* Colors */
+  --accent:        #38bdf8;
+  --accent-deep:   #0284c7;
+  --accent-glow:   rgba(56, 189, 248, 0.25);
+  --accent-2:      #818cf8;
+  --accent-2-glow: rgba(129, 140, 248, 0.2);
+  --success:       #34d399;
+  --success-glow:  rgba(52, 211, 153, 0.2);
+  --warning:       #fbbf24;
+  --warning-glow:  rgba(251, 191, 36, 0.2);
+  --danger:        #f87171;
+  --danger-glow:   rgba(248, 113, 113, 0.2);
+
+  /* Text */
+  --text-primary:   #f0f6fc;
+  --text-secondary: #8b98b0;
+  --text-muted:     #3d4f68;
+
+  /* Fonts */
+  --font-ar:   'Cairo', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Radii */
+  --r-sm:  6px;
+  --r-md:  12px;
+  --r-lg:  18px;
+  --r-xl:  26px;
+  --r-2xl: 36px;
+
+  /* Shadows */
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md:   0 4px 20px rgba(0,0,0,0.5);
+  --shadow-lg:   0 8px 40px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 40px rgba(56, 189, 248, 0.12);
+}
+
+/* ── Light theme ───────────────────────────────────── */
+[data-theme="light"] {
+  --bg-base:       #f0f4f8;
+  --bg-panel:      #e2e8f0;
+  --bg-card:       #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-glass:      rgba(255, 255, 255, 0.8);
+
+  --border:        rgba(14, 116, 144, 0.15);
+  --border-bright: rgba(14, 116, 144, 0.3);
+  --border-focus:  rgba(14, 116, 144, 0.5);
+
+  --accent:        #0284c7;
+  --accent-deep:   #0369a1;
+  --accent-glow:   rgba(2, 132, 199, 0.15);
+  --accent-2:      #6366f1;
+  --accent-2-glow: rgba(99, 102, 241, 0.15);
+  --success:       #059669;
+  --success-glow:  rgba(5, 150, 105, 0.15);
+  --warning:       #d97706;
+  --warning-glow:  rgba(217, 119, 6, 0.15);
+  --danger:        #dc2626;
+  --danger-glow:   rgba(220, 38, 38, 0.15);
+
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+  --text-muted:     #94a3b8;
+
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md:   0 4px 20px rgba(0,0,0,0.1);
+  --shadow-lg:   0 8px 40px rgba(0,0,0,0.12);
+  --shadow-glow: 0 0 40px rgba(2, 132, 199, 0.08);
+}
+
+/* Smooth theme transition on everything */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+/* But NOT on animations/transforms */
+[style*="animation"], [style*="transform"] {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-ar);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  direction: rtl;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-panel); }
+::-webkit-scrollbar-thumb { background: rgba(56,189,248,0.2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(56, 189, 248, 0.15); }
+  50%       { border-color: rgba(56, 189, 248, 0.4); }
+}
+
+button {
+  font-family: var(--font-ar);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s;
+}
+input, textarea, select {
+  font-family: var(--font-ar);
+  outline: none;
+}
+
+/* ── Responsive upload grid ────────────────────────── */
+@media (max-width: 900px) {
+  .upload-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .monitor-setup-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

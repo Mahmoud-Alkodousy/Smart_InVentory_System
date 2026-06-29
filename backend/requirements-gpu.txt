@@ -1,0 +1,18 @@
+# ════════════════════════════════════════════════════════════════════
+#  Optional GPU requirements — local development only.
+#
+#  Use this INSTEAD OF requirements.txt when you have an NVIDIA GPU
+#  available (e.g. local dev on an RTX 4050) and want faster Chronos
+#  inference. NOT used in Docker/production — those run CPU-only to
+#  keep image size small (~15GB vs ~45GB).
+#
+#  Install with:
+#    pip install -r requirements.txt --no-deps torch  (skip CPU torch)
+#    pip install -r requirements-gpu.txt
+#
+#  Then set in .env:
+#    CHRONOS_DEVICE=cuda
+# ════════════════════════════════════════════════════════════════════
+--extra-index-url https://download.pytorch.org/whl/cu118
+
+torch==2.3.0+cu118
